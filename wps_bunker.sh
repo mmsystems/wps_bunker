@@ -28,6 +28,24 @@ help() {
 	echo -e "INTERFAZ_MODO_MONITOR:\t[Requerido] La interfaz en modo monitor (mon0, wlan0mon, etc)"
 	echo -e "PAUSA:\t\t\t[Opcional] Segundos de retardo entre pines. Para evitar el bloqueo del ap. Por defecto: 0"
 	echo -e "\n- Ejemplo:\n$0 00:11:22:88:99:AA 6 mon0\n"
+	echo -e "\n Esquema: \n"
+	echo "+---------+     [Peticion mediante MAC]     +------------+"
+	echo "| CLIENTE | ------------------------------> | WPS BUNKER |"
+	echo "| __      |                                 | ____    _  |"
+	echo "| __      | <------------------------------ | ____    _  |"
+	echo "+---------+\     [Devolución de pines]      +------------+"
+	echo "            \ "
+	echo "             \ "
+	echo "              \ "
+	echo "               \ [Inyección de pines]"
+	echo "                \ "
+	echo "                 \          ··       ··"
+	echo "                  \         ||       ||"
+	echo "                   \     +---------------+"
+	echo "                    \--> | AP WIFI (WPS) |"
+	echo "                         +---------------+"
+	echo -e "\n\n"
+
 	exit 1
 }
 
