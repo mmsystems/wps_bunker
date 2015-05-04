@@ -1,2 +1,28 @@
-# wps_bunker
-PoC to work with WPS BUNKER API and reaver to crack wps pin and get the wifi key.
+######################
+# WPS BUNKER API PoC #
+######################
+
+Script para trabajar con la API de WPS BUNKER (http://wpsbunker.hackaffeine.com)
+
+El script se encarga de dados un BSSID, un canal y la interfaz en modo monitor,
+ejecutar una consulta a la base de datos de WPS BUNKER para descargar los pines
+WPS asociados al BSSID e ir probando uno por uno esos pines, con reaver, para 
+intentar recuperar la clave WIFI.
+
+
+
++---------+     [Peticion mediante MAC]     +------------+
+| CLIENTE | ------------------------------> | WPS BUNKER |
+| __      |                                 | ____    _  |
+| __      | <------------------------------ | ____    _  |
++---------+\     [Devolución de pines]      +------------+
+            \
+             \
+              \
+               \ [Inyección de pines]
+                \
+                 \          ··       ·· 
+                  \         ||       ||
+                   \     +---------------+
+                    \--> | AP WIFI (WPS) |
+                         +---------------+
